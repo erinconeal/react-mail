@@ -1,6 +1,14 @@
 import React from "react";
+import {browserHistory} from "react-router";
 
 export default class Draft extends React.Component {
+
+	//add a sendMessage method that takes in an event and prevents the default HTML action, then re-directs the browser back to "/inbox" using browserHistory. This function should fire when the send button is clicked.
+	sendMessage(event) {
+		event.preventDefault();
+		browserHistory.push("/inbox");
+	}
+
 	render() {
 		const styles = this.getStyles();
 
@@ -38,7 +46,7 @@ export default class Draft extends React.Component {
 						style={ styles.draft }
 					/>
 
-					<button style={ styles.sendButton }>
+				<button onClick={this.sendMessage} style={ styles.sendButton }>
 						Send
 					</button>
 				</form>
